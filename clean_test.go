@@ -29,6 +29,19 @@ func TestCleanURLString(t *testing.T) {
 	}
 }
 
+func TestCleanAllURLsInString(t *testing.T) {
+	in := `
+	hello https://duckduckgo.com/?t=ffab&q=hello&ia=web there
+	https://store.steampowered.com/app/413150/Stardew_Valley?snr=1_7_15__13
+	`
+
+	expected := `
+	hello https://duckduckgo.com/?q=hello there
+	https://store.steampowered.com/app/413150/Stardew_Valley
+	`
+	assert.Equal(t, expected, CleanAllURLsInString(in))
+}
+
 func getURL(t *testing.T, s string) *url.URL {
 	u, err := url.Parse(s)
 	require.NoError(t, err)

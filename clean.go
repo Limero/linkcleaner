@@ -33,3 +33,13 @@ func CleanURLString(s string) (*url.URL, error) {
 	}
 	return CleanURL(u)
 }
+
+func CleanAllURLsInString(s string) string {
+	return urlRegex.ReplaceAllStringFunc(s, func(match string) string {
+		u, err := CleanURLString(match)
+		if err != nil {
+			return match
+		}
+		return u.String()
+	})
+}

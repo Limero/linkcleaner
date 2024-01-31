@@ -49,11 +49,10 @@ func TestCleanAllURLsInString(t *testing.T) {
 
 		L&auml;s mer om <a href="https://feber.se/tag/en+runda+till/">en runda till</a>, <a href="https://feber.se/tag/druk/">druk</a>, <a href="https://feber.se/tag/another+round/">another round</a>, <a href="https://feber.se/tag/remake/">remake</a>, <a href="https://feber.se/tag/Chris+Rock/">Chris Rock</a>, <a href="https://feber.se/tag/Thomas+Vinterberg/">Thomas Vinterberg</a>, <a href="https://feber.se/tag/Mads+Mikkelsen/">Mads Mikkelsen</a>`
 
-		// TODO: This shouldn't be the expected output
 		expected := `
-			<a href="https://feber.se/film/amerikansk-remake-av-en-runda-till-pa-gang/461760/ /><br />
+			<a href="https://feber.se/film/amerikansk-remake-av-en-runda-till-pa-gang/461760/">https://feber.se/film/amerikansk-remake-av-en-runda-till-pa-gang/461760/</a><br /><br />
 
-		L&auml;s mer om <a href="https://feber.se/tag/en+runda+till/%22%3Een runda till</a>, <a href="https://feber.se/tag/druk/%22%3Edruk%3C/a>, <a href="https://feber.se/tag/another+round/%22%3Eanother round</a>, <a href="https://feber.se/tag/remake/%22%3Eremake%3C/a>, <a href="https://feber.se/tag/Chris+Rock/%22%3EChris Rock</a>, <a href="https://feber.se/tag/Thomas+Vinterberg/%22%3EThomas Vinterberg</a>, <a href="https://feber.se/tag/Mads+Mikkelsen/%22%3EMads Mikkelsen</a>`
+		L&auml;s mer om <a href="https://feber.se/tag/en+runda+till/">en runda till</a>, <a href="https://feber.se/tag/druk/">druk</a>, <a href="https://feber.se/tag/another+round/">another round</a>, <a href="https://feber.se/tag/remake/">remake</a>, <a href="https://feber.se/tag/Chris+Rock/">Chris Rock</a>, <a href="https://feber.se/tag/Thomas+Vinterberg/">Thomas Vinterberg</a>, <a href="https://feber.se/tag/Mads+Mikkelsen/">Mads Mikkelsen</a>`
 		assert.Equal(t, expected, CleanAllURLsInString(in))
 	})
 }

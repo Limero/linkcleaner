@@ -2,10 +2,11 @@ package linkcleaner
 
 import (
 	"net/url"
-	"regexp"
+
+	"mvdan.cc/xurls/v2"
 )
 
-var urlRegex = regexp.MustCompile(`(?i)\b(?:https?|ftp):\/\/\S+\b`)
+var urlRegex = xurls.Relaxed()
 
 type URLPos struct {
 	URL    *url.URL

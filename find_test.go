@@ -20,9 +20,9 @@ func TestFindURLs(t *testing.T) {
 
 	t.Run("find individual", func(t *testing.T) {
 		tt := map[string]string{
-			"<a href=\"https://example.com\">":                        "https://example.com",
-			"https://example.com/?utm_source=rss&amp;utm_medium=feed": "https://example.com/?utm_source=rss&amp;utm_medium=feed",
-			"https://example.com/tag/Hello+World/":                    "https://example.com/tag/Hello+World",
+			`<a href="https://example.com">`:                                     "https://example.com",
+			`<a href="https://example.com/?utm_source=rss&amp;utm_medium=feed">`: "https://example.com/?utm_source=rss&amp;utm_medium=feed",
+			"https://example.com/tag/Hello+World/":                               "https://example.com/tag/Hello+World",
 		}
 
 		for in, expected := range tt {
